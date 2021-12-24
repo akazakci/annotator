@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="/static/app.css"/>
+{% endblock %}
+
+{% block body %}
+<div class="video-list">
+  <h1>{{title}}</h1>
+  
+  <p><a href='/video/random_non_annotated'>Go to a random non annotated video</a></p>
+  <p><a href='/video/random'>Go to a random video</a></p>
+
+  <h3>{{videos|length}} videos ({{nb_annotated}} annotated)</h3>
+  <table class="table table-hover" style="width:100%; margin: 0 auto;">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Annotations</th>
+        <!--<th>Verified</th>--!>
+        <th>File</th>
+        <th>Type</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for video in videos %}
+      <tr>
+        <td>{{ video.id }}</td>
+        <td>{{ video.annotation|yesno }}</td>
+        <!--<td>{{ video.verified|yesno }}</td>--!>
+        <td>{{ video.name }}</td>
+        {% if video.image_list %}
+          <td>Sequence</td>
+        {% else %}
+          <td>Video</td>
+        {% endif %}
+        <td><a href="/video/{{ video.id }}">view</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
