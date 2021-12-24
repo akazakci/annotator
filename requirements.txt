@@ -1,0 +1,4 @@
+flask
+flask_sqlalchemy
+clize
+git+https://github.com/mehdidc/video_board

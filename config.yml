@@ -1,0 +1,5 @@
+sqlalchemy_database_uri: sqlite:///sqlite.db
+videos_path: static/videos
+images_path: static/frames
+problems_path: problems
+templates_path: video_board_templates
